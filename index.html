@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+  <title>Sign In</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+</head>
+<body>
+  <main class="main-bg">
+   <section class="form-section">
+    <div class="form-container">
+      <div class="logo-header">
+        <img src="./assets/logo-black.svg" alt="logo">
+      </div>
+      <div class="login-form">
+        <form >
+          <div class="error-msg display-none">
+            <div>
+              <span><i class="ri-alert-line"></i></span>
+              <p>Please correct the following error(s):</p>
+            </div>
+            <ul>
+              <li>Enter your User ID.</li>
+              <li>“Password” is a required field.</li>
+            </ul>
+          </div>
+          <fieldset>
+            <label for="username">User ID</label>
+          <div>
+            <input type="text" name="username" id="username"  >
+          </div>
+          </fieldset>
+          <fieldset>
+            <label for="password">Password</label>
+          <div><input type="password" name="password" id="password"  ></div>
+          </fieldset>
+          <div class="form-check">
+            <input type="checkbox" name="remember" id="remember">
+            <label for="remember">Remember my User ID</label>
+          </div>
+          <button class="login-btn "  type="submit">Sign On</button>
+          <div class="form-links">
+            <div>
+              <a class="forget-password" href="#">Forgot Password?</a>
+            </div>
+            <div>
+              <a class="forget-userId" href="#">Forgot User ID?</a>
+            </div>
+            
+          </div>
+        </form>
+      </div>
+      <div class="form-footer">
+        <ul >
+          <li><a href="#">Enroll</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Disclaimer</a></li>
+          <li><a href="#">Locations</a></li>
+        </ul>
+      </div>
+
+    </div>
+   </section>
+    
+  </main>
+  <script>
+    document.querySelector('form').addEventListener('submit', function (event) {
+  event.preventDefault(); // Prevent form submission
+
+  const usernameField = document.getElementById('username');
+  const passwordField = document.getElementById('password');
+  const errorContainer = document.querySelector('.error-msg');
+  const errorList = errorContainer.querySelector('ul');
+
+  // Clear any existing error messages
+  errorList.innerHTML = '';
+  errorContainer.classList.add('display-none'); // Hide error container initially
+
+  let hasError = false;
+
+  // Validate User ID
+  if (!usernameField.value.trim()) {
+    const userError = document.createElement('li');
+    userError.textContent = 'Enter your User ID.';
+    errorList.appendChild(userError);
+    hasError = true;
+  }
+
+  // Validate Password
+  if (!passwordField.value.trim()) {
+    const passError = document.createElement('li');
+    passError.textContent = '“Password” is a required field.';
+    errorList.appendChild(passError);
+    hasError = true;
+  }
+
+  // Show error container if there are errors
+  if (hasError) {
+    errorContainer.classList.remove('display-none');
+  } else {
+    
+    this.submit(); // Uncomment this line to submit the form
+  }
+});
+
+  </script>
+</body>
+</html>
