@@ -69,7 +69,7 @@
         </div>
         <div class="sidebar-list">
           <div class="online-banking-sidebar">
-            <h3 class="">Online Banking <span><i class="ri-arrow-down-wide-fill"></i></span></h3>
+            <h3 class="">Online Banking <span><i class="ri-arrow-down-wide-fill chevron-down" ></i></span></h3>
             
             <ul id="banking-sidelist" class="">
               <li><a href="#">Sign On</a></li>
@@ -79,7 +79,7 @@
             </ul>
           </div>
           <div class="other-resources-sidebar">
-            <h3><span><i class='bx bx-wrench'></i></span>Other Resources <span><i class="ri-arrow-down-wide-fill"></i></span></h3>
+            <h3><span><i class='bx bx-wrench'></i></span>Other Resources <span><i class="ri-arrow-down-wide-fill chevron-down"></i></span></h3>
             
             <ul id="resources-sidelist" class="">
               <li><a href="#">Financial Wellness</a></li>
@@ -291,7 +291,7 @@ const h3Elements = document.querySelectorAll('.sidebar-list h3');
 // Function to handle click and toggle expansion
 h3Elements.forEach((h3) => {
   h3.addEventListener('click', function () {
-    const icon = this.querySelector('i'); // Get the icon inside <h3>
+    const icon = this.querySelector('.chevron-down'); // Get the icon inside <h3>
     const ul = this.nextElementSibling;  // Get the corresponding <ul>
 
     // Close all other expanded sections
