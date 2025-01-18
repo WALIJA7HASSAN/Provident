@@ -16,6 +16,90 @@
 </head>
 <body>
   <main class="main-bg">
+    <nav>
+      <div class="nav-top">
+        <div class="nav-logo">
+          <img src="./assets/content.svg" alt="">
+        </div>
+        <div class="toggle-menu">
+          <span><i class="ri-menu-line"></i></span>
+          <p>Menu</p>
+        </div>
+        <div class="nav-header-links">
+          <a href="#"><span><i class="ri-account-circle-line"></i></span><div class="nav-header-link">Sign On</div></a>
+          <a href="#"><span><i class="ri-map-pin-line"></i></span><div class="nav-header-link">Locations</div></a>
+          <a href="#"><span><i class="ri-question-line"></i></span><div class="nav-header-link">Help</div></a>
+          <a href="#"><span><i class="ri-calendar-2-line"></i></span><div class="nav-header-link">Appointment</div></a>
+          <a href="#"><span><i class="ri-search-line"></i></span><div class="nav-header-link">Search</div> </a>
+          <a href="#"><span><i class="ri-chat-4-line"></i></span><div class="nav-header-link">Chat</div></a>
+        </div>
+      </div>
+      <div class="nav-bottom">
+        <div class="online-banking">
+          <h3>Online Banking <span><i class="ri-arrow-drop-down-line"></i></span></h3>
+          
+          <ul id="banking-navlist" class="display-none">
+            <li><a href="#">Sign On</a></li>
+            <li><a href="#">Enroll</a></li>
+            <li><a href="#">Forgot Password</a></li>
+            <li><a href="#">Forgot User ID</a></li>
+          </ul>
+        </div>
+        <div class="other-resources">
+          <h3>Other Resources <span><i class="ri-arrow-drop-down-line"></i></span></h3>
+          
+          <ul id="resources-navlist" class="display-none">
+            <li><a href="#">Financial Wellness</a></li>
+            <li><a href="#">PCU Blog</a></li>
+            <li><a href="#">Security and Fraud</a></li>
+            <li><a href="#">Seminars and Events</a></li>
+            <li><a href="#">Calculators</a></li>
+            <li><a href="#">Referral Program</a></li>
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+    <div  class="sidebar-container display-none">
+      <div id="sidebar" class="sidebar">
+        <div class="sidebar-top">
+          <span class="close-nav"><i class="ri-close-large-line"></i></span>
+        </div>
+        <div class="sidebar-list">
+          <div class="online-banking-sidebar">
+            <h3 class="">Online Banking <span><i class="ri-arrow-down-wide-fill"></i></span></h3>
+            
+            <ul id="banking-sidelist" class="">
+              <li><a href="#">Sign On</a></li>
+              <li><a href="#">Enroll</a></li>
+              <li><a href="#">Forgot Password</a></li>
+              <li><a href="#">Forgot User ID</a></li>
+            </ul>
+          </div>
+          <div class="other-resources-sidebar">
+            <h3>Other Resources <span><i class="ri-arrow-down-wide-fill"></i></span></h3>
+            
+            <ul id="resources-sidelist" class="">
+              <li><a href="#">Financial Wellness</a></li>
+              <li><a href="#">PCU Blog</a></li>
+              <li><a href="#">Security and Fraud</a></li>
+              <li><a href="#">Seminars and Events</a></li>
+              <li><a href="#">Calculators</a></li>
+              <li><a href="#">Referral Program</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="sidebar-links">
+          <a href="#"><span><i class="ri-account-circle-line"></i></span><div class="nav-header-link">Sign On</div></a>
+          <a href="#"><span><i class="ri-map-pin-line"></i></span><div class="nav-header-link">Locations</div></a>
+          <a href="#"><span><i class="ri-question-line"></i></span><div class="nav-header-link">Help</div></a>
+          <a href="#"><span><i class="ri-calendar-2-line"></i></span><div class="nav-header-link">Appointment</div></a>
+          <a href="#"><span><i class="ri-search-line"></i></span><div class="nav-header-link">Search</div> <span><i class="ri-arrow-down-wide-fill"></i></span></a></a>
+          <a href="#"><span><i class="ri-chat-4-line"></i></span><div class="nav-header-link">Chat</div></a>
+        </div>
+  
+      </div>
+    </div>
    <section class="form-section">
     <div class="form-container">
       <div class="logo-header">
@@ -72,6 +156,109 @@
    </section>
     
   </main>
+  <!-- nav -->
+   <script>
+  document.addEventListener("DOMContentLoaded", function () {
+  const h3Elements = document.querySelectorAll(".nav-bottom h3");
+
+  h3Elements.forEach((h3) => {
+    h3.addEventListener("click", function () {
+      const ulElement = this.nextElementSibling;
+
+      // Check if the clicked item is already active
+      if (this.classList.contains("nav-item-active")) {
+        // Remove active class and hide its ul
+        this.classList.remove("nav-item-active");
+        ulElement.classList.add("display-none");
+      } else {
+        // Remove active class from all h3 elements and hide all ul elements
+        h3Elements.forEach((item) => {
+          item.classList.remove("nav-item-active");
+          item.nextElementSibling.classList.add("display-none");
+        });
+
+        // Add active class to the clicked h3 and display its ul
+        this.classList.add("nav-item-active");
+        ulElement.classList.remove("display-none");
+      }
+    });
+  });
+});
+
+
+   </script>
+   <!-- sidebar -->
+    <script>
+      // Get the elements
+const menuButton = document.querySelector('.toggle-menu');
+const sidebarContainer = document.querySelector('.sidebar-container');
+const closeButton = document.querySelector('.close-nav');
+const sidebar = document.getElementById('sidebar');
+
+// Function to open the sidebar
+function openSidebar() {
+  sidebarContainer.classList.remove('display-none');
+ 
+  sidebar.classList.add('sidebar-active');
+}
+
+// Function to close the sidebar
+function closeSidebar() {
+  sidebar.classList.remove('sidebar-active');
+  setTimeout(() => {
+    sidebarContainer.classList.add('display-none');
+  }, 300); // Wait for the transition to complete before hiding it
+}
+
+// Event listeners
+menuButton.addEventListener('click', openSidebar);
+closeButton.addEventListener('click', closeSidebar);
+
+// Close sidebar when clicking outside of it
+document.addEventListener('click', (event) => {
+  if (!sidebar.contains(event.target) && !menuButton.contains(event.target)) {
+    closeSidebar();
+  }
+});
+
+    </script>
+    <!-- sidebar list -->
+     <script>
+      // Get all the <h3> elements
+const h3Elements = document.querySelectorAll('.sidebar-list h3');
+
+// Function to handle click and toggle expansion
+h3Elements.forEach((h3) => {
+  h3.addEventListener('click', function () {
+    const icon = this.querySelector('i'); // Get the icon inside <h3>
+    const ul = this.nextElementSibling;  // Get the corresponding <ul>
+
+    // Close all other expanded sections
+    document.querySelectorAll('.sidebar-list h3').forEach((otherH3) => {
+      if (otherH3 !== this && otherH3.classList.contains('sidebar-list-active')) {
+        otherH3.classList.remove('sidebar-list-active');
+        otherH3.nextElementSibling.style.maxHeight = '0';
+        otherH3.querySelector('i').classList.replace('ri-arrow-up-wide-fill', 'ri-arrow-down-wide-fill');
+      }
+    });
+
+    // Toggle the clicked section
+    if (this.classList.contains('sidebar-list-active')) {
+      // Collapse the current section
+      this.classList.remove('sidebar-list-active');
+      ul.style.maxHeight = '0';
+      icon.classList.replace('ri-arrow-up-wide-fill', 'ri-arrow-down-wide-fill');
+    } else {
+      // Expand the current section
+      this.classList.add('sidebar-list-active');
+      ul.style.maxHeight = '500px';
+      icon.classList.replace('ri-arrow-down-wide-fill', 'ri-arrow-up-wide-fill');
+    }
+  });
+});
+
+     </script>
+    <!-- form -->
   <script>
     document.querySelector('form').addEventListener('submit', function (event) {
   event.preventDefault(); // Prevent form submission

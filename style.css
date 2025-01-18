@@ -35,13 +35,223 @@ border: none;
 .display-none{
   display: none;
 }
+
+
 .main-bg{
 background: url("./assets/main-bg.jpg")  bottom/cover no-repeat;
 background-attachment: fixed;
 min-height: 100%;
 
 }
+/* nav */
+nav{
+  background: #000000e6;
+  padding: 20px;
+  padding-bottom: 0;
+}
+.nav-top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+.nav-logo{
+  width: 100%;
+  max-width: 180px;
+}
+.toggle-menu{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  color: white;
+  font-size: 16px
+}
+.toggle-menu i{
+  font-size: 34px;
+}
+.nav-header-links{
+  color: white;
+  align-items: center;
+  gap: .5rem;
+  display: none;
+}
+.nav-header-links a{
+  color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.nav-header-links i{
+  font-size: 25px;
+  font-weight: 400;
+}
+.nav-bottom{
+  padding-top: 1.5rem;
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  display: none;
+  gap: 1rem
+}
+.nav-bottom h3{
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  font-size: 16px;
+  padding-bottom: 10px;
+}
+.nav-bottom h3:hover{
+cursor: pointer;
+border-bottom: 3px solid white;
+}
+.nav-item-active{
+  border-bottom: 3px solid white;
+}
+.nav-bottom i{
+  font-size: 26px;
+}
+.nav-bottom a{
+  color: white;
+  width: 100%;
+}
+.online-banking,.other-resources{
+  position: relative;
+}
+.online-banking ul,.other-resources ul{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #2E2E2E;
+  border: 1px solid white;
+  min-width: 200px;
+}
+.nav-bottom ul li{
+  padding: 10px;
+  transition: all .5s ease;
+}
+.nav-bottom li:hover{
+  background: #01868F
+}
+/* sidebar */
+.sidebar-container{
+  width: 100%;
+  position: fixed;
+  
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.34);
+  
+}
+.sidebar{
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+  background: #f5f5f5;
+  margin-left: auto;
+  transition: all .5s ease;
+  transform: translateX(100%);
+  overflow-y: auto;
+}
+.sidebar{
+  overflow: scroll; /* Enable scrolling */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
 
+.sidebar::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for WebKit browsers */
+}
+.sidebar-active{
+  transform: translateX(0%);
+  transition: all .5s ease;
+}
+.sidebar-top{
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  border-bottom: 1px solid #BDBDBD;
+}
+
+.sidebar-top i{
+  font-size: 24px;
+  color: #424242;
+  cursor: pointer;
+}
+.sidebar-list{
+  font-size: 16px;
+  color: #212121;
+  transition: all .5s ease;
+  border-bottom: 1px solid #BDBDBD;
+}
+.sidebar-list h3{
+  font-weight: 400;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all .5s ease;
+  font-size: 16px;
+}
+.sidebar-list-active{
+  background: #44B9C4;
+  color: black;
+}
+
+.sidebar-list a{
+  color: #212121;
+}
+.sidebar-list ul{
+  background: #E0E0E0;
+  transition: all .5s ease;
+  max-height: 0;
+  overflow: hidden;
+}
+.sidebar-list li{
+  padding:  8px 8px 8px 72px;
+  transition: all .5s ease;
+}
+.sidebar-list li:hover{
+  background: #44B9C4;
+  color: black;
+}
+.sidebar-list .sidebar-list-active + ul {
+  max-height: 500px; /* Set max height when expanded */
+}
+
+/* Rotate icon on expansion */
+.sidebar-list-active .ri-arrow-down-wide-fill {
+  display: none; /* Hide the down icon when expanded */
+}
+
+.sidebar-list-active .ri-arrow-up-wide-fill {
+  display: block; /* Show the up icon when expanded */
+}
+.sidebar-links a{
+padding: 16px;
+transition: all .5s ease;
+color: #212121;
+font-size: 16px;
+display: flex;
+align-items: center;
+gap: 1rem;
+}
+.sidebar-links i{
+  font-size: 25px;
+  color: #424242;
+}
+.sidebar-links a:hover{
+  background: #44B9C4;
+}
+.sidebar-links a:nth-child(5) span:last-child{
+  flex-grow: 1;
+  display: flex;
+  justify-content: end;
+}
 /* form */
 .form-section{
   padding: 70px 24px;
@@ -186,4 +396,27 @@ box-shadow: 0 0 6px #94F7FE;
 .form-footer li a:hover{
   padding-bottom: 3px;
   border-bottom: .1rem solid black;
+}
+
+@media screen and (min-width:768px) {
+  .nav-bottom{
+    display: flex;
+  }
+  .toggle-menu{
+    display: none;
+  }
+  .nav-header-links{
+    display: flex;
+  }
+  .nav-header-link{
+    display: none;
+  }
+  .sidebar-container{
+    display: none;
+  }
+}
+@media screen and (min-width:1200px) {
+  .nav-header-link{
+    display: block;
+  }
 }
